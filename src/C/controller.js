@@ -6,5 +6,13 @@ const render = {
     res.render("login");
   },
 };
+const process = {
+  login: (req, res) => {
+    console.log(req.body);
+    return res.json({
+      result: "success",
+    });
+  },
+};
 
-export default { render };
+export default { render, process };
