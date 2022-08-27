@@ -1,4 +1,4 @@
-import UserStorage from "../M/memory/UserStorage.js";
+import User from "../M/memory/User.js";
 
 const render = {
   home: (req, res) => {
@@ -10,19 +10,9 @@ const render = {
 };
 const process = {
   login: (req, res) => {
-    const users = UserStorage.getUsers("id", "psword");
-    console.log("controller - users", users);
-    if (users.id.includes(req.body.id)) {
-      const idx = users.id.indexOf(req.body.id);
-      if (users.psword[idx] === req.body.pw) {
-        return res.json({
-          result: "success",
-        });
-      }
-    }
-    return res.json({
-      result: "fail",
-    });
+    const users = new User(req.body);
+    const response = users.login();
+    return res.json(response);
   },
 };
 
