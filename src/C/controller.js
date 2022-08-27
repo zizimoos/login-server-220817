@@ -7,6 +7,9 @@ const render = {
   login: (req, res) => {
     res.render("login");
   },
+  register: (req, res) => {
+    res.render("register");
+  },
 };
 const process = {
   login: (req, res) => {
