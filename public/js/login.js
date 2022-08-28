@@ -2,7 +2,8 @@ const id = document.getElementById("id");
 const pw = document.getElementById("pw");
 const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   const req = {
     id: id.value,
     pw: pw.value,
