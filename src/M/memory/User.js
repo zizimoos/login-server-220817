@@ -25,6 +25,21 @@ class User {
       };
     }
   }
+
+  register() {
+    const response = UserStorage.save(this.body);
+    if (response === undefined) {
+      return {
+        result: "fail",
+        message: "save fail",
+      };
+    } else if (response.success) {
+      return {
+        result: "success",
+        message: "save success",
+      };
+    }
+  }
 }
 
 export default User;

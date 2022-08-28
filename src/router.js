@@ -7,5 +7,6 @@ router.get("", control.render.home);
 router.get("/login", control.render.login);
 router.get("/register", control.render.register);
 router.post("/login", control.process.login);
+router.post("/register", control.process.register);
 
 export default router;
