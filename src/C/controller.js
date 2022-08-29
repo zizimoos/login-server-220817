@@ -1,4 +1,4 @@
-import User from "../M/memory/User.js";
+import User from "../M/fileSystem/User.js";
 
 const render = {
   home: (req, res) => {
@@ -12,14 +12,14 @@ const render = {
   },
 };
 const process = {
-  login: (req, res) => {
+  login: async (req, res) => {
     const users = new User(req.body);
-    const response = users.login();
+    const response = await users.login();
     return res.json(response);
   },
-  register: (req, res) => {
+  register: async (req, res) => {
     const user = new User(req.body);
-    const response = user.register();
+    const response = await user.register();
     return res.json(response);
   },
 };

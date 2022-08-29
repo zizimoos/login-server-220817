@@ -29,7 +29,7 @@ registerBtn.addEventListener("click", (e) => {
       if (res.result === "success") {
         window.location.href = "/login";
       } else {
-        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+        alert(res.message);
       }
     })
     .catch((error) => console.error(new Error(error)));
