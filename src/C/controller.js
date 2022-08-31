@@ -1,4 +1,4 @@
-import User from "../M/fileSystem/User.js";
+import User from "../M/dataBase/User.js";
 
 const render = {
   home: (req, res) => {

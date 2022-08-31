@@ -7,13 +7,14 @@ class User {
 
   async login() {
     const user = await UserStorage.getUserInfo(this.body.id);
+    console.log(user);
     if (user === undefined) {
       return {
         result: "fail",
         message: "wrong id",
       };
     }
-    if (user.psword === this.body.pw) {
+    if (user.password === this.body.pw) {
       return {
         result: "success",
         message: " login success",

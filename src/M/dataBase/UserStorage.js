@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+import database from "./config/database.js";
 
 class UserStorage {
   static async getUsers(...args) {
@@ -20,19 +20,12 @@ class UserStorage {
     return newUsers;
   }
   static async getUserInfo(id) {
-    const users = await fs
-      .readFile("./src/M/fileSystem/databases/users.json")
-      .then((data) => {
-        return JSON.parse(data);
-      })
-      .catch(console.error);
-    const idx = users.id.indexOf(id);
-    const userInfo = Object.keys(users).reduce((newUser, info) => {
-      // console.log("getUserInfo-info", info);
-      newUser[info] = users[info][idx];
-      return newUser;
-    }, {});
-    return userInfo;
+    return new Promise((resolve, reject) => {
+      database.query("SELECT * FROM users WHERE id = ?", [id], (err, data) => {
+        if (err) reject(err);
+        resolve(data[0]);
+      });
+    });
   }
   static async save(body) {
     const users = await fs
