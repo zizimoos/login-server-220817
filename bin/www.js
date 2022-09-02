@@ -1,5 +1,6 @@
-import app from "../src/index.js";
 import ip from "ip";
+
+import app from "../src/index.js";
 
 const PORT = process.env.PORT || 5000;
 
